@@ -16,6 +16,7 @@
   "devDependencies": {
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
+    "@nrwl/angular": "^15.8.6",
     "@nrwl/eslint-plugin-nx": "15.8.5",
     "@nrwl/jest": "15.8.5",
     "@nrwl/js": "15.8.5",
