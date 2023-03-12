@@ -46,6 +46,7 @@
     "@nrwl/nx-cloud": "latest",
     "@nrwl/webpack": "15.8.5",
     "@nrwl/workspace": "15.8.5",
+    "@nx-tools/nx-container": "^4.0.3",
     "@schematics/angular": "~15.2.0",
     "@types/jest": "^29.4.0",
     "@types/node": "~18.7.1",
