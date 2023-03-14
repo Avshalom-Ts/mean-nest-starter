@@ -87,6 +87,10 @@
           "codeCoverage": true
         }
       }
+    },
+    "docker-build": {
+      "dependsOn": ["build"],
+      "command": "docker build -f apps/coco-fe/Dockerfile . -t coco-fe"
     }
   },
   "tags": ["type:app"]

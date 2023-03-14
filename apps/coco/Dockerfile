@@ -7,7 +7,7 @@
 FROM docker.io/node:lts-alpine
 
 ENV HOST=0.0.0.0
-ENV PORT=3000
+ENV PORT=3333
 
 WORKDIR /app
 
@@ -20,5 +20,6 @@ RUN chown -R coco:coco .
 # You can remove this install step if you build with `--bundle` option.
 # The bundled output will include external dependencies.
 RUN npm --prefix coco --omit=dev -f install
+EXPOSE 3333
 
 CMD [ "node", "coco" ]
