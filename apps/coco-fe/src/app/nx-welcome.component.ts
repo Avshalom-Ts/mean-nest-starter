@@ -1,12 +1,12 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 /* eslint-disable */
 
 @Component({
   selector: 'coco-nx-welcome',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   template: `
     <!--
      * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -846,4 +846,10 @@ nx affected:e2e</pre>
   styles: [],
   encapsulation: ViewEncapsulation.None,
 })
-export class NxWelcomeComponent {}
+export class NxWelcomeComponent {
+  constructor(private readonly httpClient: HttpClient) {
+    this.httpClient.get('/api').subscribe((res: any) => {
+      console.log(res);
+    });
+  }
+}

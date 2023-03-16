@@ -3,23 +3,23 @@
 # Build the docker image with `npx nx docker-build coco`.
 # Tip: Modify "docker-build" options in project.json to change docker build args.
 #
-# Run the container with `docker run -p 3000:3000 -t coco`.
+# Run the container with `docker run -p 3333:3333 -t coco`.
 FROM docker.io/node:lts-alpine
 
-ENV HOST=0.0.0.0
 ENV PORT=3333
 
 WORKDIR /app
+RUN apk add g++ make py3-pip
+COPY package*.json ./
+RUN ls && npm install
+COPY . .
+RUN npm install nx && ls && cat package.json
+RUN npm run coco:build
+COPY dist/apps/coco ./
 
-RUN addgroup --system coco && \
-          adduser --system -G coco coco
-
-COPY dist/apps/coco coco
-RUN chown -R coco:coco .
 
 # You can remove this install step if you build with `--bundle` option.
 # The bundled output will include external dependencies.
-RUN npm --prefix coco --omit=dev -f install
-EXPOSE 3333
+EXPOSE ${PORT}
 
-CMD [ "node", "coco" ]
+CMD [ "node", "main.js" ]
