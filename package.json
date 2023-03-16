@@ -4,7 +4,9 @@
   "license": "MIT",
   "scripts": {
     "coco-fe:build": "nx build coco-fe --configuration=production",
-    "coco:build": "nx build coco --configuration=production"
+    "coco:build": "nx build coco --configuration=production",
+    "coco:serve": "nx serve coco",
+    "coco-fe:serve": "nx serve coco-fe"
   },
   "private": true,
   "dependencies": {
