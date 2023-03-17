@@ -35,12 +35,16 @@ services:
     depends_on:
       - database
   coco-api:
+    hostname: coco-api
     container_name: coco-api
     build:
       context: .
       dockerfile: apps/coco/Dockerfile.dev
       args:
         NODE_ENV: development
+    volumes:
+      - ./apps/coco:/app/apps/coco
+      - ./node_modules:/app/node_modules
     ports:
       - "3333:3333"
     depends_on:
@@ -59,9 +63,19 @@ services:
       dockerfile: apps/coco-fe/Dockerfile.dev
       args:
         NODE_ENV: production
+    volumes:
+      - ./apps/coco-fe:/app/apps/coco-fe
+      - ./node_modules:/app/node_modules
     ports:
-      - "3000:80"
+      - "4200:4200"
     depends_on:
       - coco-api
     environment:
       VERSION: 1.0.0
+
+  nginx:
+    image: nginx
+    ports:
+      - "3000:80"
+    volumes:
+      - ./apps/coco-fe/nginx/nginx.dev.conf:/etc/nginx/nginx.conf

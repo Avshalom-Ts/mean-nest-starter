@@ -14,4 +14,4 @@ COPY package*.json ./
 RUN ls && npm install
 COPY . .
 EXPOSE ${PORT}
-RUN npm run coco:serve
+CMD npm run coco:serve &
