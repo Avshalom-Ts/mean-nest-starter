@@ -4,25 +4,19 @@
 # Tip: Modify "docker-build" options in project.json to change docker build args.
 #
 # Run the container with `docker run -p 3000:3000 -t coco-fe`.
-FROM docker.io/node:lts-alpine AS builder
-RUN apk add g++ make py3-pip
+FROM node:lts-alpine AS builder
+RUN apk add --no-cache g++ make python3
 WORKDIR /app
 COPY package*.json ./
-RUN ls && npm install
+RUN npm ci
 COPY . .
-RUN npm install nx && ls && cat package.json
-RUN npm run coco-fe:build
-
-
-# You can remove this install step if you build with `--bundle` option.
-# The bundled output will include external dependencies.
+RUN npx nx build coco-fe --prod
 
 FROM nginx:latest AS ngi
 # Copying compiled code and nginx config to different folder
 # NOTE: This path may change according to your project's output folder 
 COPY --from=builder /app/dist/apps/coco-fe /usr/share/nginx/html
-COPY  apps/coco-fe/nginx/nginx.conf  /etc/nginx/conf.d/default.conf
+COPY apps/coco-fe/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 # Exposing a port, here it means that inside the container 
 # the app will be using Port 80 while running
 EXPOSE 80
-

@@ -41,6 +41,7 @@ services:
       context: .
       dockerfile: apps/coco/Dockerfile.dev
       args:
+        PORT: 3333
         NODE_ENV: development
     volumes:
       - ./apps/coco:/app/apps/coco
@@ -62,7 +63,7 @@ services:
       context: .
       dockerfile: apps/coco-fe/Dockerfile.dev
       args:
-        NODE_ENV: production
+        NODE_ENV: development
     volumes:
       - ./apps/coco-fe:/app/apps/coco-fe
       - ./node_modules:/app/node_modules
