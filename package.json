@@ -6,7 +6,8 @@
     "coco-fe:build": "nx build coco-fe --configuration=production",
     "coco:build": "nx build coco --configuration=production",
     "coco:serve": "nx serve coco",
-    "coco-fe:serve": "nx serve coco-fe"
+    "coco-fe:serve": "nx serve coco-fe",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points && node ./decorate-angular-cli.js"
   },
   "private": true,
   "dependencies": {

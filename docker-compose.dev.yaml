@@ -49,7 +49,7 @@ services:
         NODE_ENV: development
     volumes:
       - ./apps/coco:/app/apps/coco
-      - ./node_modules:/app/node_modules
+      # - ./node_modules:/app/node_modules
     ports:
       - "3333:3333"
     networks:
@@ -72,7 +72,7 @@ services:
         NODE_ENV: development
     volumes:
       - ./apps/coco-fe:/app/apps/coco-fe
-      - ./node_modules:/app/node_modules
+      # - ./node_modules:/app/node_modules
     ports:
       - "4200:4200"
     networks:
