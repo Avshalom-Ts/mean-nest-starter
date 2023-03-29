@@ -9,6 +9,7 @@ RUN apk add --no-cache g++ make python3
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
+RUN npm i @nrwl/cli
 COPY . .
 RUN npx nx build coco-fe --prod
 

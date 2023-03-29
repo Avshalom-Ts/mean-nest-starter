@@ -11,7 +11,7 @@ WORKDIR /app
 COPY package.json ./
 
 # Install the dependencies
-RUN npm install --legacy-peer-deps=true
+RUN npm install ci
 
 # Copy the entire nx monorepo to the container
 COPY . .
@@ -25,5 +25,5 @@ ENV PORT=$PORT
 EXPOSE $PORT
 
 # Start the development server
-CMD ["npx", "nx", "serve", "coco"]
+CMD ["npx", "nx", "serve", "coco", "--host 0.0.0.0"]
 
