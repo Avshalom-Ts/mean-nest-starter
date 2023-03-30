@@ -18,12 +18,9 @@ RUN npm i -g @nrwl/nx-linux-arm64-gnu
 COPY . .
 
 # Declare arguments and set them as environment variables
-ARG PORT
-
-ENV PORT=$PORT
 
 # Expose the API port
-EXPOSE $PORT
+EXPOSE 3333
 
 # Start the development server
 CMD ["npx", "nx", "serve", "coco", "--host", "0.0.0.0"]

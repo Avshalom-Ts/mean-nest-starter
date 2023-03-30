@@ -58,7 +58,7 @@ services:
       context: .
       dockerfile: apps/coco-fe/Dockerfile
       args:
-        NODE_ENV: production
+        NODE_ENV: develop
     ports:
       - "3000:80"
     depends_on:
