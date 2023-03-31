@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { environment } from '../environments/environment';
 /* eslint-disable */
 
 @Component({
@@ -850,6 +851,7 @@ export class NxWelcomeComponent {
   constructor(private readonly httpClient: HttpClient) {
     this.httpClient.get('/api').subscribe((res: any) => {
       console.log(res);
+      console.log(environment.apiUrl);
     });
   }
 }

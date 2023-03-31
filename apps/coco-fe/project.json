@@ -7,16 +7,25 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/coco-fe",
         "index": "apps/coco-fe/src/index.html",
         "main": "apps/coco-fe/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/coco-fe/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/coco-fe/src/favicon.ico", "apps/coco-fe/src/assets"],
-        "styles": ["apps/coco-fe/src/styles.scss"],
+        "assets": [
+          "apps/coco-fe/src/favicon.ico",
+          "apps/coco-fe/src/assets"
+        ],
+        "styles": [
+          "apps/coco-fe/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -41,7 +50,13 @@
           "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
-          "namedChunks": true
+          "namedChunks": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/coco-fe/src/environments/environment.ts",
+              "with": "apps/coco-fe/src/environments/environment.development.ts"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"
@@ -69,14 +84,21 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/coco-fe/**/*.ts", "apps/coco-fe/**/*.html"]
+        "lintFilePatterns": [
+          "apps/coco-fe/**/*.ts",
+          "apps/coco-fe/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/coco-fe/jest.config.ts",
         "passWithNoTests": true
@@ -89,9 +111,13 @@
       }
     },
     "docker-build": {
-      "dependsOn": ["build"],
+      "dependsOn": [
+        "build"
+      ],
       "command": "docker build -f apps/coco-fe/Dockerfile . -t coco-fe"
     }
   },
-  "tags": ["type:app"]
+  "tags": [
+    "type:app"
+  ]
 }

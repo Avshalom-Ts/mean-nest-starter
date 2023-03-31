@@ -6,7 +6,8 @@
     "coco-fe:build": "nx build coco-fe --configuration=production",
     "coco:build": "nx build coco --configuration=production",
     "coco:serve": "nx serve coco",
-    "coco-fe:serve": "nx serve coco-fe"
+    "coco-fe:serve": "nx serve coco-fe",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points && node ./decorate-angular-cli.js"
   },
   "private": true,
   "dependencies": {
@@ -41,10 +42,11 @@
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
     "@nrwl/angular": "^15.8.6",
+    "@nrwl/cli": "^15.8.7",
     "@nrwl/cypress": "15.8.6",
     "@nrwl/eslint-plugin-nx": "15.8.5",
-    "@nrwl/jest": "15.8.6",
-    "@nrwl/js": "15.8.6",
+    "@nrwl/jest": "15.8.7",
+    "@nrwl/js": "15.8.7",
     "@nrwl/linter": "15.8.5",
     "@nrwl/nest": "15.8.5",
     "@nrwl/node": "15.8.5",
