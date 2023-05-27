@@ -17,8 +17,6 @@ node_modules
 
 # Ignore build and dist folders
 
-# dist
-
 build
 
 # Ignore IDE and editor folders
