@@ -11,8 +11,6 @@ node_modules
 
 # Ignore local development files
 
-.env
-.env.local
 \*.log
 
 # Ignore build and dist folders
