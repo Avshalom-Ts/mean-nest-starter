@@ -8,9 +8,9 @@ FROM node:lts-alpine AS builder
 RUN apk add --no-cache g++ make python3
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci
-RUN npm i @nrwl/cli
 COPY . .
+RUN npm install
+RUN npm i @nrwl/cli
 RUN npx nx build coco-fe --prod
 
 FROM nginx:latest AS ngi

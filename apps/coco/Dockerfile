@@ -11,9 +11,9 @@ ENV PORT=3333
 WORKDIR /app
 RUN apk add g++ make py3-pip
 COPY package*.json ./
-RUN ls && npm install
+
 COPY . .
-RUN npm install nx && ls && cat package.json
+RUN npm install
 RUN npm run coco:build
 COPY dist/apps/coco ./
 

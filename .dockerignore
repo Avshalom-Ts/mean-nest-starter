@@ -1,21 +1,27 @@
 # Ignore unnecessary files and folders for the Docker build context
+
 .dockerignore
 .git
 .gitignore
 
 # Ignore Nx cache
+
 node_modules/.cache
 node_modules
 
 # Ignore local development files
+
 .env
 .env.local
-*.log
+\*.log
 
 # Ignore build and dist folders
-dist
+
+# dist
+
 build
 
 # Ignore IDE and editor folders
+
 .vscode
 .idea
